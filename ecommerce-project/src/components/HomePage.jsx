@@ -1,4 +1,4 @@
-import Body from "./HomePage/Body";
+import Body from "./HomePage/Home";
 import Header from "./HomePage/Header";
 
 export default function HomePage() {
