@@ -5,21 +5,21 @@ export default function CheckoutHeader(){
     return (<>
     <title>Checkout</title>
     
-    <div class="checkout-header">
-      <div class="header-content">
-        <div class="checkout-header-left-section">
+    <div className="checkout-header">
+      <div className="header-content">
+        <div className="checkout-header-left-section">
           <Link to="/">
-            <img class="logo" src="images/logo.png" />
-            <img class="mobile-logo" src="images/mobile-logo.png" />
+            <img className="logo" src="images/logo.png" />
+            <img className="mobile-logo" src="images/mobile-logo.png" />
           </Link>
         </div>
 
-        <div class="checkout-header-middle-section">
-          Checkout (<Link class="return-to-home-link"
+        <div className="checkout-header-middle-section">
+          Checkout (<Link className="return-to-home-link"
             to="/">{cart.length} items</Link>)
         </div>
 
-        <div class="checkout-header-right-section">
+        <div className="checkout-header-right-section">
           <img src="images/icons/checkout-lock-icon.png" />
         </div>
       </div>

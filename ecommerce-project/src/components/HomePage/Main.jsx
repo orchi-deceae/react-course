@@ -2,7 +2,6 @@ import products from "../../backend/products.json"
 import ProductGrid from "./extra/ProductGrid"
 
 export default function Main(){
-    console.log(products)
     return(<>
         <div className="home-page">
             <div className="products-grid">
