@@ -5,7 +5,6 @@ import Orders from './pages/Orders';
 import Tracking from './pages/Tracking';
 
 function App() {
-
     return (<>
         <Routes>
             <Route index element={<HomePage />} />

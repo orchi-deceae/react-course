@@ -1,3 +1,4 @@
+import cart from "../../backend/cart.json"
 import { Link } from "react-router"
 
 export default function Header() {
@@ -28,7 +29,7 @@ export default function Header() {
 
                 <Link className="cart-link header-link" to="/checkout">
                     <img className="cart-icon" src="images/icons/cart-icon.png" />
-                    <div className="cart-quantity">3</div>
+                    <div className="cart-quantity">{cart.length}</div>
                     <div className="cart-text">Cart</div>
                 </Link>
             </div>
