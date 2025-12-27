@@ -1,11 +1,11 @@
-export default function Home(){
+export default function Home() {
     return (<>
         <div className="home-page">
             <div className="products-grid">
                 <div className="product-container">
                     <div className="product-image-container">
                         <img className="product-image"
-                            src="products/athletic-cotton-socks-6-pairs.jpg" />
+                            src="images/products/athletic-cotton-socks-6-pairs.jpg" />
                     </div>
 
                     <div className="product-name limit-text-to-2-lines">
@@ -14,7 +14,7 @@ export default function Home(){
 
                     <div className="product-rating-container">
                         <img className="product-rating-stars"
-                            src="ratings/rating-45.png" />
+                            src="images/ratings/rating-45.png" />
                         <div className="product-rating-count link-primary">
                             87
                         </div>
@@ -42,7 +42,7 @@ export default function Home(){
                     <div className="product-spacer"></div>
 
                     <div className="added-to-cart">
-                        <img src="icons/checkmark.png" />
+                        <img src="images/icons/checkmark.png" />
                         Added
                     </div>
 
@@ -54,7 +54,7 @@ export default function Home(){
                 <div className="product-container">
                     <div className="product-image-container">
                         <img className="product-image"
-                            src="products/intermediate-composite-basketball.jpg" />
+                            src="images/products/intermediate-composite-basketball.jpg" />
                     </div>
 
                     <div className="product-name limit-text-to-2-lines">
@@ -63,7 +63,7 @@ export default function Home(){
 
                     <div className="product-rating-container">
                         <img className="product-rating-stars"
-                            src="ratings/rating-40.png" />
+                            src="images/ratings/rating-40.png" />
                         <div className="product-rating-count link-primary">
                             127
                         </div>
@@ -91,7 +91,7 @@ export default function Home(){
                     <div className="product-spacer"></div>
 
                     <div className="added-to-cart">
-                        <img src="icons/checkmark.png" />
+                        <img src="images/icons/checkmark.png" />
                         Added
                     </div>
 
@@ -103,7 +103,7 @@ export default function Home(){
                 <div className="product-container">
                     <div className="product-image-container">
                         <img className="product-image"
-                            src="products/adults-plain-cotton-tshirt-2-pack-teal.jpg" />
+                            src="images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg" />
                     </div>
 
                     <div className="product-name limit-text-to-2-lines">
@@ -112,7 +112,7 @@ export default function Home(){
 
                     <div className="product-rating-container">
                         <img className="product-rating-stars"
-                            src="ratings/rating-45.png" />
+                            src="images/ratings/rating-45.png" />
                         <div className="product-rating-count link-primary">
                             56
                         </div>
@@ -140,7 +140,7 @@ export default function Home(){
                     <div className="product-spacer"></div>
 
                     <div className="added-to-cart">
-                        <img src="icons/checkmark.png" />
+                        <img src="images/icons/checkmark.png" />
                         Added
                     </div>
 
@@ -150,6 +150,6 @@ export default function Home(){
                 </div>
             </div>
         </div>
-    
+
     </>)
 }
