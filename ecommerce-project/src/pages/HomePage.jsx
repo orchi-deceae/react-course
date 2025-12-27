@@ -1,8 +1,8 @@
 import Header from "../components/universal/Header";
 import Main from "../components/HomePage/Main";
-import "../styles/shared/general.css"
-import "../styles/shared/header.css"
-import "../styles/pages/index.css"
+import "../components/HomePage/general.css"
+import "../components/HomePage/header.css"
+import "../components/HomePage/index.css"
 
 export default function HomePage() {
     return (<>

@@ -1,7 +1,7 @@
 import CheckoutHeader from "../components/Checkout/CheckoutHeader"
 import Main from "../components/Checkout/Main"
-import "../styles/pages/checkout/checkoutHeader.css"
-import "../styles/pages/checkout/checkout.css"
+import "../components/Checkout/CheckoutHeader.css"
+import "../components/Checkout/checkout.css"
 
 export default function Checkout() {
     return (<>
