@@ -1,4 +1,4 @@
-import Body from "../components/HomePage/Home";
+import Main from "../components/HomePage/Main";
 import Header from "../components/HomePage/Header";
 
 export default function HomePage() {
@@ -6,6 +6,6 @@ export default function HomePage() {
         <title>Ecommerce Project</title>
 
         <Header />
-        <Body />
+        <Main />
     </>)
 }

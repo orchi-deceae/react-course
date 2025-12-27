@@ -1,4 +1,4 @@
-export default function Home() {
+export default function Main() {
     return (<>
         <div className="home-page">
             <div className="products-grid">
