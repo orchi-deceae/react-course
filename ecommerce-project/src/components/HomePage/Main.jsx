@@ -3,6 +3,8 @@ import ProductGrid from "./extra/ProductGrid"
 
 export default function Main(){
     return(<>
+        <link rel="icon" type="image/svg+xml" href="images/home-favicon.png" />
+    
         <div className="home-page">
             <div className="products-grid">
                 {products.map((product) => {

@@ -2,6 +2,8 @@ import { Link } from "react-router";
 
 export default function Main() {
     return (<>
+        <link rel="icon" href="images/tracking-favicon.png" />
+
         <div className="tracking-page">
             <div className="order-tracking">
                 <Link className="back-to-orders-link link-primary" to="/orders">
