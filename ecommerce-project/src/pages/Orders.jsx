@@ -1,10 +1,10 @@
 import Header from "../components/universal/Header";
-import Main from "../components/Orders/Main";
-import "../components/Orders/orders.css"
+import Page from "../components/Orders/Page";
+import "../components/Orders/Page.css"
 
 export default function Orders() {
     return (<>
         <Header />
-        <Main />
+        <Page />
     </>)
 }

@@ -1,7 +1,7 @@
 import cart from "../../backend/cart.json"
 import { Link } from "react-router";
 
-export default function CheckoutHeader(){
+export default function Header(){
     return (<>
     <title>Checkout</title>
     

@@ -1,10 +1,10 @@
 import Header from "../components/universal/Header";
-import Main from "../components/Tracking/Main";
-import "../components/Tracking/tracking.css"
+import Page from "../components/Tracking/Page";
+import "../components/Tracking/Page.css"
 
 export default function Tracking() {
     return (<>
         <Header />
-        <Main />
+        <Page />
     </>)
 }

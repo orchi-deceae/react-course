@@ -1,6 +1,6 @@
 import { Link } from "react-router"
 
-export default function Main() {
+export default function Page() {
     return (<>
         <link rel="icon" type="image/svg+xml" href="images/orders-favicon.png" />
    

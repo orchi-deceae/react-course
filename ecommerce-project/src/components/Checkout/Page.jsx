@@ -1,4 +1,4 @@
-export default function Main(){
+export default function Page(){
     return (<>
         <link rel="icon" type="image/svg+xml" href="images/cart-favicon.png" />
     

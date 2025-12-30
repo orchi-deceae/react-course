@@ -1,12 +1,12 @@
 import Header from "../components/universal/Header";
-import Main from "../components/HomePage/Main";
-import "../components/HomePage/general.css"
-import "../components/HomePage/header.css"
-import "../components/HomePage/index.css"
+import Page from "../components/HomePage/Page";
+import "../components/universal/general.css"
+import "../components/universal/Header.css"
+import "../components/HomePage/Page.css"
 
 export default function HomePage() {
     return (<>
         <Header />
-        <Main />
+        <Page />
     </>)
 }
