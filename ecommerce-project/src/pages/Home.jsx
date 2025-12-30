@@ -1,10 +1,10 @@
 import Header from "../components/universal/Header";
-import Page from "../components/HomePage/Page";
+import Page from "../components/Home/Page";
 import "../components/universal/general.css"
 import "../components/universal/Header.css"
-import "../components/HomePage/Page.css"
+import "../components/Home/Page.css"
 
-export default function HomePage() {
+export default function Home() {
     return (<>
         <Header />
         <Page />
