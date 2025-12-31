@@ -1,3 +1,4 @@
+import logo from "../../assets/images/logo.png"
 import { Link } from "react-router"
 
 export default function Page() {
@@ -44,7 +45,7 @@ export default function Page() {
                                 Quantity: 1
                             </div>
                             <button className="buy-again-button button-primary">
-                                <img className="buy-again-icon" src="images/icons/buy-again.png" />
+                                <img className="buy-again-icon" src={buyAgain} />
                                 <span className="buy-again-message">Add to Cart</span>
                             </button>
                         </div>
@@ -72,7 +73,7 @@ export default function Page() {
                                 Quantity: 2
                             </div>
                             <button className="buy-again-button button-primary">
-                                <img className="buy-again-icon" src="images/icons/buy-again.png" />
+                                <img className="buy-again-icon" src={buyAgain} />
                                 <span className="buy-again-message">Add to Cart</span>
                             </button>
                         </div>
@@ -123,7 +124,7 @@ export default function Page() {
                                 Quantity: 2
                             </div>
                             <button className="buy-again-button button-primary">
-                                <img className="buy-again-icon" src="images/icons/buy-again.png" />
+                                <img className="buy-again-icon" src={buyAgain} />
                                 <span className="buy-again-message">Add to Cart</span>
                             </button>
                         </div>

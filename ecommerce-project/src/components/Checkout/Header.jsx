@@ -1,4 +1,6 @@
 import cart from "../../backend/cart.json"
+import logo from "../../assets/images/logo.png"
+import mobileLogo from "../../assets/images/mobile-logo.png"
 import { Link } from "react-router";
 
 export default function Header(){
@@ -9,8 +11,8 @@ export default function Header(){
       <div className="header-content">
         <div className="checkout-header-left-section">
           <Link to="/">
-            <img className="logo" src="images/logo.png" />
-            <img className="mobile-logo" src="images/mobile-logo.png" />
+            <img className="logo" src={logo} />
+            <img className="mobile-logo" src={mobileLogo} />
           </Link>
         </div>
 

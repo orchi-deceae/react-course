@@ -1,3 +1,5 @@
+
+import checkmark from "../../../assets/images/icons/checkmark.png"
 import formatCurrency from "../../utils/formatCurrency";
 
 export default function ProductGrid({ id, image, name, priceCents, rating }) {
@@ -43,7 +45,7 @@ export default function ProductGrid({ id, image, name, priceCents, rating }) {
             <div className="product-spacer"></div>
 
             <div className="added-to-cart">
-                <img src="images/icons/checkmark.png"/>
+                <img src={checkmark} />
                 Added
             </div>
 
