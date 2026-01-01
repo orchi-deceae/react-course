@@ -1,18 +1,7 @@
-import { useEffect, useState } from "react"
 import ProductGrid from "./extra/ProductGrid"
-import axios from 'axios'
 
 
-export default function Page(){
-    const [products, setProducts] = useState([])
-    useEffect(()=>{
-        async function loadProducts(){
-            const response = await axios.get("http://localhost:3000/api/products")
-            console.log(response.data)
-            setProducts(response.data)
-        }
-        loadProducts()
-    }, [])
+export default function Page({ products }){
     return(<>
         <link rel="icon" type="image/svg+xml" href="images/home-favicon.png" />
         
