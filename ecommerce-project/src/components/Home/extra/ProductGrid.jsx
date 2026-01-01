@@ -54,7 +54,7 @@ export default function ProductGrid({ id, image, name, priceCents, rating }) {
             <button 
                 className="add-to-cart-button button-primary" 
                 onClick={addToCart}
-                product-id={id}
+                data-product-id={id}
             >
                 Add to Cart
             </button>
