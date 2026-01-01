@@ -11,12 +11,12 @@ export default function Home() {
     const [cart, setCart] = useState([])
     useEffect(()=>{
         async function loadProducts(){
-            const response = await axios.get("http://localhost:3000/api/products")
+            const response = await axios.get("/api/products")
             console.log(response.data)
             setProducts(response.data)
         }
         async function loadCart(){
-            const response = await axios.get("http://localhost:3000/api/cart-items")
+            const response = await axios.get("/api/cart-items")
             setCart(response.data)
         }
         loadProducts()
