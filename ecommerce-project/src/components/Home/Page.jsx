@@ -1,11 +1,12 @@
-// import products from "../../backend/products.json"
+import products from "../../backend/products.json"
 import ProductGrid from "./extra/ProductGrid"
+import axios from 'axios'
+
 
 export default function Page(){
     async function getProducts(){
-        const response = await fetch("http://localhost:3000/api/products")
-        const products = await response.json()
-        console.log(products)
+        const response = await axios.get("http://localhost:3000/api/products")
+        console.log(response.data)
     }
     getProducts()
     return(<>
