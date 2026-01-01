@@ -1,11 +1,14 @@
-import cart from "../../backend/cart.json"
 import logo from "../../assets/images/logo-white.png"
 import mobileLogo from "../../assets/images/mobile-logo-white.png"
 import cartIcon from "../../assets/images/icons/cart-icon.png"
 import searchIcon from "../../assets/images/icons/search-icon.png"
 import { NavLink } from "react-router"
 
-export default function Header() {
+export default function Header({ cart }) {
+    function getCartQuantity(sum=0){
+        cart.forEach(item => sum += item.quantity);
+        return sum;
+    }
     return (<>
         <title>Orders</title>
 
@@ -33,7 +36,7 @@ export default function Header() {
 
                 <NavLink className="cart-link header-link" to="/checkout">
                     <img className="cart-icon" src={cartIcon} />
-                    <div className="cart-quantity">{cart.length}</div>
+                    <div className="cart-quantity">{getCartQuantity()}</div>
                     <div className="cart-text">Cart</div>
                 </NavLink>
             </div>
