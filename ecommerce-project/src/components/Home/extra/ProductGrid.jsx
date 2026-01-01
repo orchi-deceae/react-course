@@ -1,9 +1,11 @@
-
 import checkmark from "../../../assets/images/icons/checkmark.png"
 import formatCurrency from "../../utils/formatCurrency";
+import cart from "../../../backend/cart.json"
 
 export default function ProductGrid({ id, image, name, priceCents, rating }) {
-
+    function addToCart(){
+        console.log(cart)
+    }
     return (<>
         <div className="product-container">
             <div className="product-image-container">
@@ -49,7 +51,11 @@ export default function ProductGrid({ id, image, name, priceCents, rating }) {
                 Added
             </div>
 
-            <button className="add-to-cart-button button-primary" product-id={id}>
+            <button 
+                className="add-to-cart-button button-primary" 
+                onClick={addToCart}
+                product-id={id}
+            >
                 Add to Cart
             </button>
         </div>
