@@ -11,16 +11,8 @@ function App() {
     const [products, setProducts] = useState([])
     const [cart, setCart] = useState([])
     useEffect(()=>{
-        async function loadProducts(){
-            const response = await axios.get("/api/products")
-            setProducts(response.data)
-        }
-        async function loadCart(){
-            const response = await axios.get("/api/cart-items?expand=product")
-            setCart(response.data)
-        }
-        loadProducts()
-        loadCart()
+        axios.get("/api/products").then((response)=>{setProducts(response.data)})
+        axios.get("/api/cart-items?expand=product").then((response)=>{setCart(response.data)})
     }, [])
 
     return (<>

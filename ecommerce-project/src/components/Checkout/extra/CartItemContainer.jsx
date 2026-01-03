@@ -17,11 +17,8 @@ export default function CartItemContainer({ cartItem }) {
         })} */
    }
     useEffect(()=>{
-        async function loadDeliveryOptions(){
-            const response = await axios.get("/api/delivery-options?expand=estimatedDeliveryTime")
-            setDeliveryOptions(response.data)
-        }
-        loadDeliveryOptions()
+        axios.get("/api/delivery-options?expand=estimatedDeliveryTime")
+        .then((response)=>{setDeliveryOptions(response.data)})
     }, [])
 
     return Boolean(deliveryOptions.length) && (<>
