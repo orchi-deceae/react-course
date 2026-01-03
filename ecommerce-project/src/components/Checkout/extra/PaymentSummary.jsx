@@ -1,6 +1,6 @@
-import axios from "axios";
 import { useEffect, useState } from "react"
 import formatCurrency from "../../utils/formatCurrency";
+import axios from "axios";
 
 export default function PaymentSummary() {
     const [paymentSummary, setPaymentSummary] = useState(null)

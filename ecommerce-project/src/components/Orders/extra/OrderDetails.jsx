@@ -1,7 +1,7 @@
 import { Link } from "react-router";
+import { Fragment } from "react";
 import buyAgainIcon from "../../../assets/images/icons/buy-again.png"
 import dayjs from "dayjs";
-import { Fragment } from "react";
 
 export default function OrderDetails({ orderProduct }) {
     return (<Fragment>

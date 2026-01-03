@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import formatCurrency from '../../utils/formatCurrency'
-import DeliveryOption from './DeliveryOption';
+import DeliveryOption from '../extra/DeliveryOption';
 import axios from 'axios';
 import dayjs from 'dayjs';
 

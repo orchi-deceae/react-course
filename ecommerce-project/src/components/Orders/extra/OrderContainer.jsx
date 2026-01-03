@@ -1,6 +1,6 @@
-import dayjs from "dayjs"
 import formatCurrency from "../../utils/formatCurrency"
-import OrderDetails from "./OrderDetails"
+import OrderDetails from "../extra/OrderDetails"
+import dayjs from "dayjs"
 
 export default function OrderContainer({ orderItem}) {
     return (<>
