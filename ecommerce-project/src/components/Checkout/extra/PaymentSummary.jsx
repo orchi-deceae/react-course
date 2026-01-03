@@ -7,6 +7,7 @@ export default function PaymentSummary() {
     useEffect(() => {
         axios.get("/api/payment-summary").then((response) => { setPaymentSummary(response.data) })
     }, []);
+    
     return paymentSummary && (<>
         <div className="payment-summary">
             <div className="payment-summary-title">

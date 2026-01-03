@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import formatCurrency from '../../utils/formatCurrency'
-import DeliveryOption from '../extra/DeliveryOption';
+import DeliveryOption from './_DeliveryOption_';
 import axios from 'axios';
 import dayjs from 'dayjs';
 
@@ -62,45 +62,6 @@ export default function CartItemContainer({ cartItem }) {
                             key={deliveryOption.id}
                          />
                     })}
-                    {/* <div className="delivery-option">
-                        <input type="radio" checked
-                            className="delivery-option-input"
-                            name="delivery-option-1" />
-                        <div>
-                            <div className="delivery-option-date">
-                                {deliveryDate.add(7, 'day').format('dddd, MMMM DD')}
-                            </div>
-                            <div className="delivery-option-price">
-                                FREE Shipping
-                            </div>
-                        </div>
-                    </div>
-                    <div className="delivery-option">
-                        <input type="radio"
-                            className="delivery-option-input"
-                            name="delivery-option-1" />
-                        <div>
-                            <div className="delivery-option-date">
-                                {deliveryDate.add(5, 'day').format('dddd, MMMM DD')}
-                            </div>
-                            <div className="delivery-option-price">
-                                $4.99 - Shipping
-                            </div>
-                        </div>
-                    </div>
-                    <div className="delivery-option">
-                        <input type="radio"
-                            className="delivery-option-input"
-                            name="delivery-option-1" />
-                        <div>
-                            <div className="delivery-option-date">
-                                {deliveryDate.add(3, 'day').format('dddd, MMMM DD')}
-                            </div>
-                            <div className="delivery-option-price">
-                                $9.99 - Shipping
-                            </div>
-                        </div>
-                    </div> */}
                 </div>
             </div>
         </div>
