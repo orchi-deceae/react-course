@@ -10,7 +10,7 @@ export default function Page({ cart }){
             <div className="checkout-grid">
                 <div className="order-summary">
                     {cart.map((cartItem)=>{
-                        return <CartItemContainer cartItem={cartItem} />
+                        return <CartItemContainer cartItem={cartItem} key={cartItem.id} />
                     })}
                 </div>
 

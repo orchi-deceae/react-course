@@ -1,13 +1,33 @@
-import dayjs from 'dayjs'
+import { useEffect, useState } from 'react'
 import formatCurrency from '../../utils/formatCurrency'
+import DeliveryOption from './DeliveryOption';
+import axios from 'axios';
+import dayjs from 'dayjs';
 
 export default function CartItemContainer({ cartItem }) {
-    const deliveryDate = dayjs(cartItem.createdAt)
+    const [deliveryOptions, setDeliveryOptions] = useState([]);
+    const selectedDeliveryOption = deliveryOptions.find((deliveryOption)=>{
+        return deliveryOption.id === cartItem.deliveryOptionId;
+    });
+    {                   /*Map version*/
+        /* {deliveryOptions.map((deliveryOption)=>{
+        if (deliveryOption.id === cartItem.deliveryOptionId) {
+            return dayjs(deliveryOption.estimatedDeliveryTimeMs).format('dddd, MMMM DD')
+        }
+        })} */
+   }
+    useEffect(()=>{
+        async function loadDeliveryOptions(){
+            const response = await axios.get("/api/delivery-options?expand=estimatedDeliveryTime")
+            setDeliveryOptions(response.data)
+        }
+        loadDeliveryOptions()
+    }, [])
 
-    return (<>
+    return Boolean(deliveryOptions.length) && (<>
         <div className="cart-item-container">
             <div className="delivery-date">
-                Delivery date: {deliveryDate.format('dddd, MMMM DD')}
+                Delivery date: {dayjs(selectedDeliveryOption.estimatedDeliveryTimeMs).format('dddd, MMMM DD')}
             </div>
 
             <div className="cart-item-details-grid">
@@ -38,7 +58,14 @@ export default function CartItemContainer({ cartItem }) {
                     <div className="delivery-options-title">
                         Choose a delivery option:
                     </div>
-                    <div className="delivery-option">
+                    {deliveryOptions.map((deliveryOption)=>{
+                        return <DeliveryOption 
+                            deliveryOption={deliveryOption} 
+                            cartItem={cartItem}
+                            key={deliveryOption.id}
+                         />
+                    })}
+                    {/* <div className="delivery-option">
                         <input type="radio" checked
                             className="delivery-option-input"
                             name="delivery-option-1" />
@@ -76,7 +103,7 @@ export default function CartItemContainer({ cartItem }) {
                                 $9.99 - Shipping
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
