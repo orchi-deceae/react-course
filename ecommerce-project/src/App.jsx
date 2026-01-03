@@ -13,11 +13,10 @@ function App() {
     useEffect(()=>{
         async function loadProducts(){
             const response = await axios.get("/api/products")
-            console.log(response.data)
             setProducts(response.data)
         }
         async function loadCart(){
-            const response = await axios.get("/api/cart-items")
+            const response = await axios.get("/api/cart-items?expand=product")
             setCart(response.data)
         }
         loadProducts()
@@ -27,10 +26,10 @@ function App() {
     return (<>
         <Routes>
             <Route index element={<Home cart={cart} products={products} />} />
-            <Route path='/checkout' element={<Checkout cart={cart} products={products} />} />
+            <Route path='/checkout' element={<Checkout cart={cart} />} />
             <Route path='/orders' element={<Orders cart={cart} products={products} />} />
             <Route path='/tracking' element={<Tracking cart={cart} products={products} />} />
-            <Route path='*' element={<NotFound cart={cart} products={products} />} />
+            <Route path='*' element={<NotFound />} />
         </Routes>
     </>)
 }

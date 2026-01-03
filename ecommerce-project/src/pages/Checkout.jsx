@@ -3,9 +3,9 @@ import Page from "../components/Checkout/Page"
 import "../components/Checkout/Header.css"
 import "../components/Checkout/Page.css"
 
-export default function Checkout({ cart, products }) {
+export default function Checkout({ cart }) {
     return (<>
-        <Header/>
-        <Page/>
+        <Header />
+        <Page cart={cart} />
     </>)
 }
