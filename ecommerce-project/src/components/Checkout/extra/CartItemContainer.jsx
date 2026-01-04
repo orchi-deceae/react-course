@@ -3,19 +3,10 @@ import formatCurrency from '../../utils/formatCurrency'
 import DeliveryOption from './_DeliveryOption_';
 import axios from 'axios';
 import dayjs from 'dayjs';
+import DeliveryDate from './_DeliveryDate_';
 
 export default function CartItemContainer({ cartItem }) {
     const [deliveryOptions, setDeliveryOptions] = useState([]);
-    const selectedDeliveryOption = deliveryOptions.find((deliveryOption)=>{
-        return deliveryOption.id === cartItem.deliveryOptionId;
-    });
-    {                   /*Map version*/
-        /* {deliveryOptions.map((deliveryOption)=>{
-        if (deliveryOption.id === cartItem.deliveryOptionId) {
-            return dayjs(deliveryOption.estimatedDeliveryTimeMs).format('dddd, MMMM DD')
-        }
-        })} */
-   }
     useEffect(()=>{
         axios.get("/api/delivery-options?expand=estimatedDeliveryTime")
         .then((response)=>{setDeliveryOptions(response.data)})
@@ -23,9 +14,10 @@ export default function CartItemContainer({ cartItem }) {
 
     return Boolean(deliveryOptions.length) && (<>
         <div className="cart-item-container">
-            <div className="delivery-date">
-                Delivery date: {dayjs(selectedDeliveryOption.estimatedDeliveryTimeMs).format('dddd, MMMM DD')}
-            </div>
+            <DeliveryDate 
+                deliveryOptions={deliveryOptions} 
+                cartItem={cartItem} 
+            />
 
             <div className="cart-item-details-grid">
                 <img className="product-image"
