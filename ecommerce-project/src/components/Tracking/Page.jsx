@@ -11,24 +11,23 @@ export default function Page() {
         api(setOrderItem, `orders/${orderId}`)
     }, [orderId]);
 
-    let orderProduct
-    if (orderItem) orderProduct = orderItem.products.find((product)=>{
+    if (!orderItem) {
+        return null
+    }
+    console.log(orderItem)
+
+    const orderProduct = orderItem.products.find((product)=>{
         return product.productId === productId
     });
-    let deliveryPercent
-    if (orderItem) {
-        const totalDeliveryTimeMs = orderProduct.estimatedDeliveryTimeMs - orderItem.orderTimeMs
-        const timePassedMs = dayjs().valueOf() - orderItem.orderTimeMs
-        deliveryPercent = (timePassedMs / totalDeliveryTimeMs) * 100
-        if (deliveryPercent > 100) deliveryPercent = 100
-    }
-    let isPreparing, isShipped, isDelivered
-    if (orderItem) {
-        if (deliveryPercent < 33) isPreparing = true
-        else if (deliveryPercent < 100) isShipped = true
-        else isDelivered = true
-       
-    }
+    
+    const totalDeliveryTimeMs = orderProduct.estimatedDeliveryTimeMs - orderItem.orderTimeMs
+    const timePassedMs = dayjs().valueOf() - orderItem.orderTimeMs
+    let deliveryPercent = (timePassedMs / totalDeliveryTimeMs) * 100
+    if (deliveryPercent > 100) deliveryPercent = 100
+
+    const isPreparing = deliveryPercent < 33
+    const isShipped = deliveryPercent >= 33 && deliveryPercent < 100
+    const isDelivered = deliveryPercent === 100
 
     return Boolean(orderItem) && (<>
         <link rel="icon" href="images/tracking-favicon.png" />
