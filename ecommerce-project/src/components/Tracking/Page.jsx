@@ -1,6 +1,9 @@
-import { Link } from "react-router";
+import { Link, useParams } from "react-router";
 
 export default function Page() {
+    const { orderId, productId } = useParams()
+    console.log(orderId, productId)
+
     return (<>
         <link rel="icon" href="images/tracking-favicon.png" />
 

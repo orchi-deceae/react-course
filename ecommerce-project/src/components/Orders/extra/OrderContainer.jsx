@@ -2,7 +2,7 @@ import formatCurrency from "../../utils/formatCurrency"
 import OrderDetails from "../extra/_OrderDetails_"
 import dayjs from "dayjs"
 
-export default function OrderContainer({ orderItem}) {
+export default function OrderContainer({ orderItem }) {
     return (<>
         <div className="order-container">
 
@@ -26,7 +26,7 @@ export default function OrderContainer({ orderItem}) {
 
             <div className="order-details-grid">
                 {orderItem.products.map((orderProduct)=>{
-                    return <OrderDetails orderProduct={orderProduct} key={orderProduct.productId} />
+                    return <OrderDetails orderProduct={orderProduct} orderId={orderItem.id} key={orderProduct.productId} />
                 })}
             </div>
         </div>

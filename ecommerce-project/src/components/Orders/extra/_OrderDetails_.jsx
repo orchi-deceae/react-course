@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import buyAgainIcon from "../../../assets/images/icons/buy-again.png"
 import dayjs from "dayjs";
 
-export default function OrderDetails({ orderProduct }) {
+export default function OrderDetails({ orderProduct, orderId }) {
     return (<Fragment>
 
         <div className="product-image-container">
@@ -27,7 +27,7 @@ export default function OrderDetails({ orderProduct }) {
         </div>
 
         <div className="product-actions">
-            <Link to="/tracking">
+            <Link to={`/tracking/${orderId}/${orderProduct.productId}`}>
                 <button className="track-package-button button-secondary">
                     Track package
                 </button>
