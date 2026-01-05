@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react"
 import formatCurrency from "../../utils/formatCurrency";
 import axios from "axios";
+import { api } from "../../utils/data";
 
 export default function PaymentSummary() {
     const [paymentSummary, setPaymentSummary] = useState(null)
     useEffect(() => {
-        axios.get("/api/payment-summary").then((response) => { setPaymentSummary(response.data) })
+        api(setPaymentSummary, "payment-summary")
+        // axios.get("/api/payment-summary").then((response) => { setPaymentSummary(response.data) })
     }, []);
     
     return paymentSummary && (<>

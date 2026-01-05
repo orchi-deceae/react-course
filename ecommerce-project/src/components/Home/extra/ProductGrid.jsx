@@ -1,10 +1,9 @@
 import checkmark from "../../../assets/images/icons/checkmark.png"
 import formatCurrency from "../../utils/formatCurrency";
-import cart from "../../../backend/cart.json"
 
 export default function ProductGrid({ id, image, name, priceCents, rating }) {
     function addToCart(){
-        console.log(cart)
+        console.log("Hello")
     }
     return (<>
         <div className="product-container">

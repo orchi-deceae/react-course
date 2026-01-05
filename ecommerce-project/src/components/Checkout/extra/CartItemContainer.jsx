@@ -4,12 +4,13 @@ import DeliveryOption from './_DeliveryOption_';
 import axios from 'axios';
 import dayjs from 'dayjs';
 import DeliveryDate from './_DeliveryDate_';
+import { api } from '../../utils/data';
 
 export default function CartItemContainer({ cartItem }) {
     const [deliveryOptions, setDeliveryOptions] = useState([]);
     useEffect(()=>{
-        axios.get("/api/delivery-options?expand=estimatedDeliveryTime")
-        .then((response)=>{setDeliveryOptions(response.data)})
+        api(setDeliveryOptions, "delivery-options")
+        // axios.get("/api/delivery-options?expand=estimatedDeliveryTime").then((response)=>{setDeliveryOptions(response.data)})
     }, [])
 
     return Boolean(deliveryOptions.length) && (<>
