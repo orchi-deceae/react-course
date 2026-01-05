@@ -5,24 +5,25 @@ export async function api(set, id) {
         const response = await axios.get("/api/products")
         set(response.data)
     }
-    else if (id === "cart-items") {
+    if (id === "cart-items") {
         const response = await axios.get("/api/cart-items?expand=product")
         set(response.data)
     }
-    else if (id === "delivery-options") {
+    if (id === "delivery-options") {
         const response = await axios.get("/api/delivery-options?expand=estimatedDeliveryTime")
         set(response.data)
     }
-    else if (id === "orders") {
+    if (id === "orders") {
         const response = await axios.get("/api/orders?expand=products")
         set(response.data)
     }
-    else if (id === "payment-summary") {
-        const response = await axios.get("/api/payment-summary")
+    if (id.includes("orders/")) {
+        const response = await axios.get(`/api/orders/${id.replaceAll("orders/", "")}?expand=products`)
         set(response.data)
     }
-    else {
-        console.log(id + " <- fix")
+    if (id === "payment-summary") {
+        const response = await axios.get("/api/payment-summary")
+        set(response.data)
     }
 }
 

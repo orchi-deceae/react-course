@@ -1,9 +1,9 @@
 import Header from "../components/universal/Header";
 import "../components/Home/Page"
 
-export default function NotFound(){
+export default function NotFound({ cart }){
     return (<>
-        <Header />
-        <p>Page not found</p>
+        <Header cart={cart} />
+        <p style={{paddingTop: "80px"}}>Page not found</p>
     </>)
 }
