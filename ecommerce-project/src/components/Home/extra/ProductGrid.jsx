@@ -1,9 +1,13 @@
+import axios from "axios";
 import checkmark from "../../../assets/images/icons/checkmark.png"
 import formatCurrency from "../../utils/formatCurrency";
 
 export default function ProductGrid({ id, image, name, priceCents, rating }) {
     function addToCart(){
-        console.log("Hello")
+        axios.post("/api/cart-items", {
+            productId: id,
+            quantity: 1
+        });
     }
     return (<>
         <div className="product-container">

@@ -5,7 +5,7 @@ import "../components/Checkout/Page.css"
 
 export default function Checkout({ cart }) {
     return (<>
-        <Header />
+        <Header cart={cart} />
         <Page cart={cart} />
     </>)
 }

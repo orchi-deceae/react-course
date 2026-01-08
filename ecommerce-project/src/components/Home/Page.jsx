@@ -9,11 +9,12 @@ export default function Page({ products }){
             <div className="products-grid">
                 {products.map((product) => {
                     return <ProductGrid
-                        key={product.id}
+                        id={product.id}
                         name={product.name}
                         image={product.image}
                         rating={product.rating}
                         priceCents={product.priceCents}
+                        key={product.id}
                     />
                 })}
             </div>

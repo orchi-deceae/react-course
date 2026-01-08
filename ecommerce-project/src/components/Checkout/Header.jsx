@@ -1,9 +1,12 @@
-import cart from "../../backend/cart.json"
 import logo from "../../assets/images/logo.png"
 import mobileLogo from "../../assets/images/mobile-logo.png"
 import { Link } from "react-router";
 
-export default function Header(){
+export default function Header({ cart }){
+    function getCartQuantity(sum=0){
+        cart.forEach(item => sum += item.quantity);
+        return sum;
+    }
     return (<>
     <title>Checkout</title>
     
@@ -18,7 +21,7 @@ export default function Header(){
 
         <div className="checkout-header-middle-section">
           Checkout (<Link className="return-to-home-link"
-            to="/">{cart.length} items</Link>)
+            to="/">{getCartQuantity()} items</Link>)
         </div>
 
         <div className="checkout-header-right-section">
