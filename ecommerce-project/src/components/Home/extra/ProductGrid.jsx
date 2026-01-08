@@ -1,13 +1,22 @@
 import axios from "axios";
 import checkmark from "../../../assets/images/icons/checkmark.png"
 import formatCurrency from "../../utils/formatCurrency";
+import api from "../../utils/data";
+import { useState } from "react";
 
-export default function ProductGrid({ id, image, name, priceCents, rating }) {
-    function addToCart(){
-        axios.post("/api/cart-items", {
+export default function ProductGrid({ id, image, name, priceCents, rating, setCart }) {
+    const [quantity, setQuentity] = useState(0);
+
+    function getSelectedQuantity(ev) {
+        const quantitySelected = Number(ev.target.value);
+        setQuentity(quantitySelected)
+    }
+    async function addToCart() {
+        await axios.post("/api/cart-items", {
             productId: id,
             quantity: 1
         });
+        await api(setCart, "cart-items")
     }
     return (<>
         <div className="product-container">
@@ -22,7 +31,7 @@ export default function ProductGrid({ id, image, name, priceCents, rating }) {
 
             <div className="product-rating-container">
                 <img className="product-rating-stars"
-                    src={`images/ratings/rating-${rating.stars*10}.png`} />
+                    src={`images/ratings/rating-${rating.stars * 10}.png`} />
                 <div className="product-rating-count link-primary">
                     {rating.count}
                 </div>
@@ -33,7 +42,7 @@ export default function ProductGrid({ id, image, name, priceCents, rating }) {
             </div>
 
             <div className="product-quantity-container">
-                <select>
+                <select value={quantity} onChange={getSelectedQuantity}>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -54,8 +63,8 @@ export default function ProductGrid({ id, image, name, priceCents, rating }) {
                 Added
             </div>
 
-            <button 
-                className="add-to-cart-button button-primary" 
+            <button
+                className="add-to-cart-button button-primary"
                 onClick={addToCart}
                 data-product-id={id}
             >

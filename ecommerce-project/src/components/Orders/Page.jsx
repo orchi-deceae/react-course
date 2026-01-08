@@ -1,24 +1,23 @@
 import { useEffect, useState } from "react"
 import OrderContainer from "./extra/OrderContainer"
-import axios from "axios"
-import { api } from "../utils/data";
+import api from "../utils/data";
 
 export default function Page() {
     const [orders, setOrders] = useState(null)
-    useEffect(()=>{
+    useEffect(() => {
         api(setOrders, "orders")
         // axios.get("/api/?expand=products").then((response)=>{setOrders(response.data)})
     }, []);
-    
+
     return Boolean(orders) && (<>
         <link rel="icon" type="image/svg+xml" href="images/orders-favicon.png" />
-   
+
         <div className="orders-page">
             <div className="page-title">Your Orders</div>
 
             <div className="orders-grid">
-                {orders.map((orderItem)=>{
-                    return <OrderContainer orderItem={orderItem} key={orderItem.id}/>
+                {orders.map((orderItem) => {
+                    return <OrderContainer orderItem={orderItem} key={orderItem.id} />
                 })}
             </div>
         </div>

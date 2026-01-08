@@ -4,9 +4,9 @@ import "../components/universal/general.css"
 import "../components/universal/Header.css"
 import "../components/Home/Page.css"
 
-export default function Home({ cart }) {
+export default function Home({ cart, setCart }) {
     return (<>
-        <Header cart={cart}/>
-        <Page />
+        <Header cart={cart} />
+        <Page setCart={setCart} />
     </>)
 }

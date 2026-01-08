@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react'
 import formatCurrency from '../../utils/formatCurrency'
-import DeliveryOption from './_DeliveryOption_';
-import axios from 'axios';
-import dayjs from 'dayjs';
-import DeliveryDate from './_DeliveryDate_';
-import { api } from '../../utils/data';
+import DeliveryOption from './_DeliveryOption';
+import DeliveryDate from './_DeliveryDate';
+import api from '../../utils/data';
 
 export default function CartItemContainer({ cartItem }) {
     const [deliveryOptions, setDeliveryOptions] = useState([]);

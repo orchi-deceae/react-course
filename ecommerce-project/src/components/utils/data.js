@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export async function api(set, id) {
+export default async function api(set, id) {
     const extra = id.replaceAll(/products|cart-items|delivery-options|orders|payment-summary/g, "")
     const key = id.replace(extra, "")
     const endpoints = {

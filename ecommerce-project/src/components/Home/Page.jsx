@@ -1,17 +1,17 @@
 import ProductGrid from "./extra/ProductGrid"
 import { useEffect, useState } from "react"
-import { api } from "../utils/data"
+import api from "../utils/data"
 
 
-export default function Page(){
+export default function Page({ setCart }) {
     const [products, setProducts] = useState([])
-    useEffect(()=>{
+    useEffect(() => {
         api(setProducts, "products")
     }, [])
 
-    return(<>
+    return (<>
         <link rel="icon" type="image/svg+xml" href="images/home-favicon.png" />
-        
+
         <div className="home-page">
             <div className="products-grid">
                 {products.map((product) => {
@@ -22,6 +22,7 @@ export default function Page(){
                         rating={product.rating}
                         priceCents={product.priceCents}
                         key={product.id}
+                        setCart={setCart}
                     />
                 })}
             </div>

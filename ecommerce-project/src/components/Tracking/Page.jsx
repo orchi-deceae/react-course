@@ -1,22 +1,22 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
-import { api } from "../utils/data";
+import api from "../utils/data";
 import dayjs from "dayjs";
 
 export default function Page() {
     const [orderItem, setOrderItem] = useState(null)
     const { orderId, productId } = useParams()
-    
-    useEffect(()=>{
+
+    useEffect(() => {
         api(setOrderItem, `orders/${orderId}`)
     }, [orderId]);
 
     if (!orderItem) return null
 
-    const product = orderItem.products.find((product)=>{
+    const product = orderItem.products.find((product) => {
         return product.productId === productId
     });
-    
+
     const totalDeliveryTimeMs = product.estimatedDeliveryTimeMs - orderItem.orderTimeMs
     const timePassedMs = dayjs().valueOf() - orderItem.orderTimeMs
     let deliveryPercent = (timePassedMs / totalDeliveryTimeMs) * 100
@@ -45,7 +45,7 @@ export default function Page() {
 
                 <div className="delivery-date">
                     {deliveryPercent >= 100 ? "Delivered " : "Arriving "}
-                     on {dayjs(product.estimatedDeliveryTimeMs).format("dddd, MMMM DD")}
+                    on {dayjs(product.estimatedDeliveryTimeMs).format("dddd, MMMM DD")}
                 </div>
 
                 <div className="product-info">
@@ -71,7 +71,7 @@ export default function Page() {
                 </div>
 
                 <div className="progress-bar-container">
-                    <div className="progress-bar" style={{width: `${deliveryPercent}%`}}></div>
+                    <div className="progress-bar" style={{ width: `${deliveryPercent}%` }}></div>
                 </div>
             </div>
         </div>
