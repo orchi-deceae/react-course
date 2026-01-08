@@ -1,30 +1,21 @@
 import axios from "axios";
 
 export async function api(set, id) {
-    if (id === "products") {
-        const response = await axios.get("/api/products")
-        set(response.data)
-    }
-    if (id === "cart-items") {
-        const response = await axios.get("/api/cart-items?expand=product")
-        set(response.data)
-    }
-    if (id === "delivery-options") {
-        const response = await axios.get("/api/delivery-options?expand=estimatedDeliveryTime")
-        set(response.data)
-    }
-    if (id === "orders") {
-        const response = await axios.get("/api/orders?expand=products")
-        set(response.data)
-    }
-    if (id.includes("orders/")) {
-        const response = await axios.get(`/api/orders/${id.replaceAll("orders/", "")}?expand=products`)
-        set(response.data)
-    }
-    if (id === "payment-summary") {
-        const response = await axios.get("/api/payment-summary")
-        set(response.data)
-    }
+    const extra = id.replaceAll(/products|cart-items|delivery-options|orders|payment-summary/g, "")
+    const key = id.replace(extra, "")
+    const endpoints = {
+        "products": `/api/products${extra}`,
+        "orders": `/api/orders${extra}?expand=products`,
+        "payment-summary": `/api/payment-summary${extra}`,
+        "cart-items": `/api/cart-items${extra}?expand=product`,
+        "delivery-options": `/api/delivery-options${extra}?expand=estimatedDeliveryTime`,
+    };
+    const endpoint = endpoints[key];
+
+    !endpoint && console.log(`${key} <- unknown resource`)
+
+    const response = await axios.get(endpoint)
+    set(response.data)
 }
 
 
