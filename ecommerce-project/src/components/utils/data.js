@@ -72,3 +72,27 @@ export async function api(set, id) {
 //         }
 //     }
 // }
+/*  */
+// export async function api(set, id) {
+//     const extra = id.replaceAll(/products|cart-items|delivery-options|orders|payment-summary/g, "")
+//     if (id.includes("products")) {
+//         const response = await axios.get(`/api/products${extra}`)
+//         set(response.data)
+//     }
+//     if (id.includes("cart-items")) {
+//         const response = await axios.get(`/api/cart-items${extra}?expand=product`)
+//         set(response.data)
+//     }
+//     if (id.includes("delivery-options")) {
+//         const response = await axios.get(`/api/delivery-options${extra}?expand=estimatedDeliveryTime`)
+//         set(response.data)
+//     }
+//     if (id.includes("orders")) {
+//         const response = await axios.get(`/api/orders${extra}?expand=products`)
+//         set(response.data)
+//     }
+//     if (id.includes("payment-summary")) {
+//         const response = await axios.get(`/api/payment-summary${extra}`)
+//         set(response.data)
+//     }
+// }
