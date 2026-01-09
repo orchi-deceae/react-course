@@ -5,7 +5,7 @@ import checkmark from "../../../assets/images/icons/checkmark.png"
 import { useState } from "react";
 
 export default function ProductGrid({ id, image, name, priceCents, rating, setCart }) {
-    const [quantity, setQuentity] = useState(0);
+    const [quantity, setQuentity] = useState(1);
 
     function selectedQuantity(ev) {
         const quantitySelected = Number(ev.target.value);
