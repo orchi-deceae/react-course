@@ -11,11 +11,11 @@ function App() {
     const [cart, setCart] = useState([])
     useEffect(() => {
         api(setCart, "cart-items")
-    }, [])
+    }, [cart])
 
     return (<>
         <Routes>
-            <Route index element={<Home cart={cart} setCart={setCart} />} />
+            <Route index element={<Home cart={cart} />} />
             <Route path='/checkout' element={<Checkout cart={cart} />} />
             <Route path='/orders' element={<Orders cart={cart} />} />
             <Route path='/tracking/:orderId/:productId' element={<Tracking cart={cart} />} />

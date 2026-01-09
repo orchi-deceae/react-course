@@ -3,11 +3,9 @@ import { useEffect, useState } from "react"
 import api from "../utils/data"
 
 
-export default function Page({ setCart }) {
+export default function Page() {
     const [products, setProducts] = useState([])
-    useEffect(() => {
-        api(setProducts, "products")
-    }, [])
+    useEffect(() => {api(setProducts, "products")}, [products])
 
     return (<>
         <link rel="icon" type="image/svg+xml" href="images/home-favicon.png" />
@@ -17,12 +15,11 @@ export default function Page({ setCart }) {
                 {products.map((product) => {
                     return <ProductGrid
                         id={product.id}
+                        key={product.id}
                         name={product.name}
                         image={product.image}
                         rating={product.rating}
                         priceCents={product.priceCents}
-                        key={product.id}
-                        setCart={setCart}
                     />
                 })}
             </div>

@@ -4,10 +4,7 @@ import api from "../../utils/data";
 
 export default function PaymentSummary() {
     const [paymentSummary, setPaymentSummary] = useState(null)
-    useEffect(() => {
-        api(setPaymentSummary, "payment-summary")
-        // axios.get("/api/payment-summary").then((response) => { setPaymentSummary(response.data) })
-    }, []);
+    useEffect(() => {api(setPaymentSummary, "payment-summary")}, [paymentSummary]);
 
     return paymentSummary && (<>
         <div className="payment-summary">

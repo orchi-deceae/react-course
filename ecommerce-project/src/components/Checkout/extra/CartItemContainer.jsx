@@ -6,10 +6,7 @@ import api from '../../utils/data';
 
 export default function CartItemContainer({ cartItem }) {
     const [deliveryOptions, setDeliveryOptions] = useState([]);
-    useEffect(()=>{
-        api(setDeliveryOptions, "delivery-options")
-        // axios.get("/api/delivery-options?expand=estimatedDeliveryTime").then((response)=>{setDeliveryOptions(response.data)})
-    }, [])
+    useEffect(()=>{api(setDeliveryOptions, "delivery-options")}, [deliveryOptions])
 
     return Boolean(deliveryOptions.length) && (<>
         <div className="cart-item-container">

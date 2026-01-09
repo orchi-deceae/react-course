@@ -4,10 +4,7 @@ import api from "../utils/data";
 
 export default function Page() {
     const [orders, setOrders] = useState(null)
-    useEffect(() => {
-        api(setOrders, "orders")
-        // axios.get("/api/?expand=products").then((response)=>{setOrders(response.data)})
-    }, []);
+    useEffect(() => {api(setOrders, "orders")}, [orders]);
 
     return Boolean(orders) && (<>
         <link rel="icon" type="image/svg+xml" href="images/orders-favicon.png" />

@@ -4,12 +4,9 @@ import api from "../utils/data";
 import dayjs from "dayjs";
 
 export default function Page() {
-    const [orderItem, setOrderItem] = useState(null)
     const { orderId, productId } = useParams()
-
-    useEffect(() => {
-        api(setOrderItem, `orders/${orderId}`)
-    }, [orderId]);
+    const [orderItem, setOrderItem] = useState(null)
+    useEffect(() => {api(setOrderItem, `orders/${orderId}`)}, [orderId]);
 
     if (!orderItem) return null
 
