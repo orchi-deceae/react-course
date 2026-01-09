@@ -17,6 +17,24 @@ export default async function api(set, id) {
     const response = await axios.get(endpoint)
     set(response.data)
 }
+export default async function get(input, output) {
+    const extra = input.replaceAll(/products|cart-items|delivery-options|orders|payment-summary/g, "")
+    const key = input.replace(extra, "")
+    
+    const endpoints = {
+        "orders": `/api/${input}?expand=products`,
+        "products": `/api/${input}`,
+        "cart-items": `/api/${input}?expand=product`,
+        "payment-summary": `/api/${input}`,
+        "delivery-options": `/api/${input}?expand=estimatedDeliveryTime`,
+    };
+    const endpoint = endpoints[key];
+
+    !endpoint && console.log(`${key} <- unknown resource`)
+
+    const response = await axios.get(endpoint)
+    output(response.data)
+}
 
 
 // export class Storage {
