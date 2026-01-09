@@ -1,5 +1,4 @@
 import axios from "axios";
-import api from "../../utils/data";
 import formatCurrency from "../../utils/formatCurrency";
 import checkmark from "../../../assets/images/icons/checkmark.png"
 import { useState } from "react";

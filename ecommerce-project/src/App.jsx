@@ -5,13 +5,11 @@ import Checkout from './pages/Checkout';
 import Orders from './pages/Orders';
 import Tracking from './pages/Tracking';
 import NotFound from './pages/NotFound';
-import api from './components/utils/data';
+import get from './components/utils/data';
 
 function App() {
     const [cart, setCart] = useState([])
-    useEffect(() => {
-        api(setCart, "cart-items")
-    }, [cart])
+    useEffect(() => {get("cart-items", setCart)}, [])
 
     return (<>
         <Routes>

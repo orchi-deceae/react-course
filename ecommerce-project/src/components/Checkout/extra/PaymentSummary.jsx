@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 import formatCurrency from "../../utils/formatCurrency";
-import api from "../../utils/data";
+import get from "../../utils/data";
 
 export default function PaymentSummary() {
     const [paymentSummary, setPaymentSummary] = useState(null)
-    useEffect(() => {api(setPaymentSummary, "payment-summary")}, [paymentSummary]);
+    useEffect(() => {get("payment-summary", setPaymentSummary)}, []);
 
     return paymentSummary && (<>
         <div className="payment-summary">

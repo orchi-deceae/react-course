@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react'
 import formatCurrency from '../../utils/formatCurrency'
 import DeliveryOption from './_DeliveryOption';
 import DeliveryDate from './_DeliveryDate';
-import api from '../../utils/data';
+import get from '../../utils/data';
 
 export default function CartItemContainer({ cartItem }) {
     const [deliveryOptions, setDeliveryOptions] = useState([]);
-    useEffect(()=>{api(setDeliveryOptions, "delivery-options")}, [deliveryOptions])
+    useEffect(()=>{get("delivery-options", setDeliveryOptions)}, [])
 
     return Boolean(deliveryOptions.length) && (<>
         <div className="cart-item-container">

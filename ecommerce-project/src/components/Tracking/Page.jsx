@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
-import api from "../utils/data";
+import get from "../utils/data";
 import dayjs from "dayjs";
 
 export default function Page() {
     const { orderId, productId } = useParams()
+    
     const [orderItem, setOrderItem] = useState(null)
-    useEffect(() => {api(setOrderItem, `orders/${orderId}`)}, [orderId]);
+    useEffect(() => {get(`orders/${orderId}`, setOrderItem)}, [orderId]);
 
     if (!orderItem) return null
 

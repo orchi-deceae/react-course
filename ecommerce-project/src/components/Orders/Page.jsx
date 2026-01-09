@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 import OrderContainer from "./extra/OrderContainer"
-import api from "../utils/data";
+import get from "../utils/data";
 
 export default function Page() {
     const [orders, setOrders] = useState(null)
-    useEffect(() => {api(setOrders, "orders")}, [orders]);
+    useEffect(() => {get("orders", setOrders)}, []);
 
     return Boolean(orders) && (<>
         <link rel="icon" type="image/svg+xml" href="images/orders-favicon.png" />

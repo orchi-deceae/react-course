@@ -1,11 +1,11 @@
 import ProductGrid from "./extra/ProductGrid"
 import { useEffect, useState } from "react"
-import api from "../utils/data"
+import get from "../utils/data"
 
 
 export default function Page() {
     const [products, setProducts] = useState([])
-    useEffect(() => {api(setProducts, "products")}, [products])
+    useEffect(() => {get("products", setProducts)}, [])
 
     return (<>
         <link rel="icon" type="image/svg+xml" href="images/home-favicon.png" />
