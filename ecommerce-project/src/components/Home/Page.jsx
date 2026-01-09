@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import get from "../utils/data"
 
 
-export default function Page() {
+export default function Page({ setCart }) {
     const [products, setProducts] = useState([])
     useEffect(() => {get("products", setProducts)}, [])
 
@@ -14,12 +14,9 @@ export default function Page() {
             <div className="products-grid">
                 {products.map((product) => {
                     return <ProductGrid
-                        id={product.id}
+                        product={product}
+                        setCart={setCart}
                         key={product.id}
-                        name={product.name}
-                        image={product.image}
-                        rating={product.rating}
-                        priceCents={product.priceCents}
                     />
                 })}
             </div>

@@ -2,19 +2,22 @@ import axios from "axios";
 import formatCurrency from "../../utils/formatCurrency";
 import checkmark from "../../../assets/images/icons/checkmark.png"
 import { useState } from "react";
+import get from "../../utils/data";
 
-export default function ProductGrid({ id, image, name, priceCents, rating }) {
-    const [quantity, setQuentity] = useState(1);
+export default function ProductGrid({ product, setCart }) {
+    const { id, image, name, priceCents, rating } = product
+    const [quantity, setQuantity] = useState(1);
 
     async function addToCart() {
         await axios.post("/api/cart-items", {
             productId: id,
             quantity
         });
+        get("cart-items", setCart)
     }
     function selectedQuantity(ev) {
         const quantitySelected = Number(ev.target.value);
-        setQuentity(quantitySelected)
+        setQuantity(quantitySelected)
     }
     return (<>
         <div className="product-container">
