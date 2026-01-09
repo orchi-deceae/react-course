@@ -1,7 +1,7 @@
 import CartItemContainer from "./extra/cartItemContainer"
 import PaymentSummary from "./extra/PaymentSummary"
 
-export default function Page({ cart }){
+export default function Page(){
     return (<>
         <link rel="icon" type="image/svg+xml" href="images/cart-favicon.png" />
     

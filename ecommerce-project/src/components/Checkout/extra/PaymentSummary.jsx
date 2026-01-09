@@ -3,8 +3,11 @@ import formatCurrency from "../../utils/formatCurrency";
 import get from "../../utils/data";
 
 export default function PaymentSummary() {
+    const [cart, setCart] = useState([])
+    useEffect(() => {get("cart-items", setCart)}, []);
+    
     const [paymentSummary, setPaymentSummary] = useState(null)
-    useEffect(() => {get("payment-summary", setPaymentSummary)}, []);
+    useEffect(() => {get("payment-summary", setPaymentSummary)}, [cart]);
 
     return paymentSummary && (<>
         <div className="payment-summary">
