@@ -2,10 +2,7 @@ import { useEffect, useState } from "react"
 import formatCurrency from "../../utils/formatCurrency";
 import get from "../../utils/data";
 
-export default function PaymentSummary() {
-    const [cart, setCart] = useState([])
-    useEffect(() => {get("cart-items", setCart)}, []);
-    
+export default function PaymentSummary({ cart }) {
     const [paymentSummary, setPaymentSummary] = useState(null)
     useEffect(() => {get("payment-summary", setPaymentSummary)}, [cart]);
 

@@ -1,7 +1,7 @@
 import CartItemContainer from "./extra/cartItemContainer"
 import PaymentSummary from "./extra/PaymentSummary"
 
-export default function Page(){
+export default function Page({ cart, setCart }){
     return (<>
         <link rel="icon" type="image/svg+xml" href="images/cart-favicon.png" />
     
@@ -11,11 +11,11 @@ export default function Page(){
             <div className="checkout-grid">
                 <div className="order-summary">
                     {cart.map((cartItem)=>{
-                        return <CartItemContainer cartItem={cartItem} key={cartItem.id} />
+                        return <CartItemContainer cartItem={cartItem} setCart={setCart} key={cartItem.id} />
                     })}
                 </div>
 
-                <PaymentSummary />
+                <PaymentSummary cart={cart} />
             </div>
         </div>
     </>)

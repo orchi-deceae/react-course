@@ -1,13 +1,13 @@
 import axios from "axios";
 
 export default async function get(id, output) {
-    const extra = id.replaceAll(/products|cart-items|delivery-options|orders|payment-summary/g, "")
+    const extra = id.replaceAll(/products|cart|delivery-options|orders|payment-summary/g, "")
     const key = id.replace(extra, "")
-    
+
     const endpoints = {
         "orders": `/api/orders${extra}?expand=products`,
         "products": `/api/products${extra}`,
-        "cart-items": `/api/cart-items${extra}?expand=product`,
+        "cart": `/api/cart-items${extra}?expand=product`,
         "payment-summary": `/api/payment-summary${extra}`,
         "delivery-options": `/api/delivery-options${extra}?expand=estimatedDeliveryTime`,
     };
@@ -26,7 +26,7 @@ export default async function get(id, output) {
 //             const response = await axios.get("/api/products")
 //             set(response.data)
 //         }
-//         else if (id === "cart-items") {
+//         else if (id === "cart") {
 //             const response = await axios.get("/api/cart-items?expand=product")
 //             set(response.data)
 //         }
@@ -52,7 +52,7 @@ export default async function get(id, output) {
 //     async loadStateData(set, resourceId) {
 //         const endpoints = {
 //             "products": "/api/products",
-//             "cart-items": "/api/cart-items?expand=product",
+//             "cart": "/api/cart-items?expand=product",
 //             "delivery-options": "/api/delivery-options?expand=estimatedDeliveryTime",
 //             "orders": "/api/orders?expand=products",
 //             "payment-summary": "/api/payment-summary",
@@ -80,7 +80,7 @@ export default async function get(id, output) {
 //         const response = await axios.get(`/api/products${extra}`)
 //         set(response.data)
 //     }
-//     if (id.includes("cart-items")) {
+//     if (id.includes("cart")) {
 //         const response = await axios.get(`/api/cart-items${extra}?expand=product`)
 //         set(response.data)
 //     }

@@ -1,21 +1,23 @@
 import axios from "axios";
 import formatCurrency from "../../utils/formatCurrency";
 import dayjs from 'dayjs'
+import get from "../../utils/data";
 
-export default function DeliveryOption({ deliveryOption, cartItem }) {
+export default function DeliveryOption({ deliveryOption, cartItem, setCart }) {
     const deliveryDate = dayjs(deliveryOption.estimatedDeliveryTimeMs)
     const isChecked = deliveryOption.id == cartItem.deliveryOptionId
     async function updateDeliveryOption() {
         await axios.put(`api/cart-items/${cartItem.productId}`, {
             deliveryOptionId: deliveryOption.id
         })
+        get("cart", setCart);
     }
 
     return (<>
         <div className="delivery-option" onClick={updateDeliveryOption}>
-            <input type="radio" checked={isChecked} onChange={()=>{}}
+            <input type="radio" checked={isChecked} onChange={() => { }}
                 className="delivery-option-input"
-                name={`delivery-option-${deliveryOption.id}`} />
+                name={`delivery-option-${cartItem.productId}`} />
             <div>
                 <div className="delivery-option-date">
                     {deliveryDate.format('dddd, MMMM DD')}

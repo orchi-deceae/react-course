@@ -13,7 +13,7 @@ export default function ProductGrid({ product, setCart }) {
             productId: id,
             quantity
         });
-        get("cart-items", setCart)
+        get("cart", setCart)
     }
     function selectedQuantity(ev) {
         const quantitySelected = Number(ev.target.value);

@@ -4,7 +4,7 @@ import DeliveryOption from './_DeliveryOption';
 import DeliveryDate from './_DeliveryDate';
 import get from '../../utils/data';
 
-export default function CartItemContainer({ cartItem }) {
+export default function CartItemContainer({ cartItem, setCart }) {
     const [deliveryOptions, setDeliveryOptions] = useState([]);
     useEffect(()=>{get("delivery-options", setDeliveryOptions)}, [])
 
@@ -47,6 +47,7 @@ export default function CartItemContainer({ cartItem }) {
                         return <DeliveryOption 
                             deliveryOption={deliveryOption} 
                             cartItem={cartItem}
+                            setCart={setCart}
                             key={deliveryOption.id}
                          />
                     })}
