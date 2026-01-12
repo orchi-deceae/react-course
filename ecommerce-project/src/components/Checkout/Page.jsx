@@ -15,7 +15,7 @@ export default function Page({ cart, setCart }){
                     })}
                 </div>
 
-                <PaymentSummary cart={cart} />
+                <PaymentSummary cart={cart} setCart={setCart} />
             </div>
         </div>
     </>)
