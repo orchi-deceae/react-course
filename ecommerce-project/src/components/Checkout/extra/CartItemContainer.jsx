@@ -3,10 +3,16 @@ import formatCurrency from '../../utils/formatCurrency'
 import DeliveryOption from './_DeliveryOption';
 import DeliveryDate from './_DeliveryDate';
 import get from '../../utils/data';
+import axios from 'axios';
 
 export default function CartItemContainer({ cartItem, setCart }) {
     const [deliveryOptions, setDeliveryOptions] = useState([]);
     useEffect(()=>{get("delivery-options", setDeliveryOptions)}, [])
+
+    async function deleteCartItem(){
+        await axios.delete(`/api/cart-items/${cartItem.productId}`)
+        get("cart", setCart);
+    }
 
     return Boolean(deliveryOptions.length) && (<>
         <div className="cart-item-container">
@@ -33,7 +39,9 @@ export default function CartItemContainer({ cartItem, setCart }) {
                         <span className="update-quantity-link link-primary">
                             Update
                         </span>
-                        <span className="delete-quantity-link link-primary">
+                        <span className="delete-quantity-link link-primary"
+                            onClick={deleteCartItem}
+                        >
                             Delete
                         </span>
                     </div>
