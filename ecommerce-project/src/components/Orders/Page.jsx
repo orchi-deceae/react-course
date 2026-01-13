@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import OrderContainer from "./extra/OrderContainer"
 import axios from "axios";
 
-export default function Page() {
+export default function Page({ loadCart }) {
     const [orders, setOrders] = useState(null)
     async function loadOrders() {
         const response = await axios.get("/api/orders?expand=products")
@@ -23,6 +23,7 @@ export default function Page() {
                 {orders.map((orderItem) => {
                     return <OrderContainer
                         orderItem={orderItem}
+                        loadCart={loadCart}
                         key={orderItem.id}
                     />
                 })}

@@ -2,9 +2,9 @@ import Header from "../components/universal/Header";
 import Page from "../components/Orders/Page";
 import "../components/Orders/Page.css"
 
-export default function Orders({ cart }) {
+export default function Orders({ cart, loadCart }) {
     return (<>
         <Header cart={cart} />
-        <Page />
+        <Page loadCart={loadCart} />
     </>)
 }
