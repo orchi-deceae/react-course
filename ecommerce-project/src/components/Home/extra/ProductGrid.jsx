@@ -6,6 +6,7 @@ import { useState } from "react";
 export default function ProductGrid({ product, loadCart }) {
     const { id, image, name, priceCents, rating } = product
     const [quantity, setQuantity] = useState(1);
+    const [isVisible, setIsVisible] = useState(false)
 
     async function addToCart() {
         await axios.post("/api/cart-items", {
@@ -13,6 +14,8 @@ export default function ProductGrid({ product, loadCart }) {
             quantity
         });
         loadCart()
+        setIsVisible(true)
+        setTimeout(()=>setIsVisible(false), 2000)
     }
     function selectedQuantity(ev) {
         const quantitySelected = Number(ev.target.value);
@@ -58,7 +61,9 @@ export default function ProductGrid({ product, loadCart }) {
 
             <div className="product-spacer"></div>
 
-            <div className="added-to-cart">
+            <div className="added-to-cart"
+                style={{opacity: isVisible? 1 : 0}}
+            >
                 <img src={checkmark} />
                 Added
             </div>
