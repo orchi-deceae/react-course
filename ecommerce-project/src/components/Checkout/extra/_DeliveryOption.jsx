@@ -1,16 +1,16 @@
 import axios from "axios";
 import formatCurrency from "../../utils/formatCurrency";
 import dayjs from 'dayjs'
-import get from "../../utils/data";
 
-export default function DeliveryOption({ deliveryOption, cartItem, setCart }) {
+export default function DeliveryOption({ deliveryOption, cartItem, loadCart }) {
     const deliveryDate = dayjs(deliveryOption.estimatedDeliveryTimeMs)
     const isChecked = deliveryOption.id == cartItem.deliveryOptionId
+
     async function updateDeliveryOption() {
         await axios.put(`api/cart-items/${cartItem.productId}`, {
             deliveryOptionId: deliveryOption.id
         })
-        get("cart", setCart);
+        loadCart()
     }
 
     return (<>

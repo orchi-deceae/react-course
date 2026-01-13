@@ -1,17 +1,12 @@
-import { useEffect, useState } from 'react'
 import formatCurrency from '../../utils/formatCurrency'
 import DeliveryOption from './_DeliveryOption';
 import DeliveryDate from './_DeliveryDate';
-import get from '../../utils/data';
 import axios from 'axios';
 
-export default function CartItemContainer({ cartItem, setCart }) {
-    const [deliveryOptions, setDeliveryOptions] = useState([]);
-    useEffect(()=>{get("delivery-options", setDeliveryOptions)}, [])
-
+export default function CartItemContainer({ cartItem, loadCart, deliveryOptions }) {
     async function deleteCartItem(){
         await axios.delete(`/api/cart-items/${cartItem.productId}`)
-        get("cart", setCart);
+        loadCart()
     }
 
     return Boolean(deliveryOptions.length) && (<>
@@ -55,7 +50,7 @@ export default function CartItemContainer({ cartItem, setCart }) {
                         return <DeliveryOption 
                             deliveryOption={deliveryOption} 
                             cartItem={cartItem}
-                            setCart={setCart}
+                            loadCart={loadCart}
                             key={deliveryOption.id}
                          />
                     })}

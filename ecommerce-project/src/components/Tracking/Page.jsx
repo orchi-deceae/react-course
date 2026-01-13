@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
-import get from "../utils/data";
 import dayjs from "dayjs";
+import axios from "axios";
 
 export default function Page() {
     const { orderId, productId } = useParams()
-    
+
     const [orderItem, setOrderItem] = useState(null)
-    useEffect(() => {get(`orders/${orderId}`, setOrderItem)}, [orderId]);
+    async function loadOrderItem() {
+        const response = await axios.get(`/api/orders/${orderId}?expand=products`)
+        setOrderItem(response.data)
+    }
+    useEffect(() => {loadOrderItem()}, [orderId]);
 
     if (!orderItem) return null
 

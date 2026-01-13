@@ -1,10 +1,17 @@
 import { useEffect, useState } from "react"
 import OrderContainer from "./extra/OrderContainer"
-import get from "../utils/data";
+import axios from "axios";
 
 export default function Page() {
     const [orders, setOrders] = useState(null)
-    useEffect(() => {get("orders", setOrders)}, []);
+    async function loadOrders() {
+        const response = await axios.get("/api/orders?expand=products")
+        setOrders(response.data)
+    }
+    useEffect(() => {loadOrders()}, []);
+
+    if (!orders) return null
+
 
     return Boolean(orders) && (<>
         <link rel="icon" type="image/svg+xml" href="images/orders-favicon.png" />
@@ -14,7 +21,10 @@ export default function Page() {
 
             <div className="orders-grid">
                 {orders.map((orderItem) => {
-                    return <OrderContainer orderItem={orderItem} key={orderItem.id} />
+                    return <OrderContainer
+                        orderItem={orderItem}
+                        key={orderItem.id}
+                    />
                 })}
             </div>
         </div>

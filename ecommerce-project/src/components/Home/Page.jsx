@@ -1,11 +1,17 @@
 import ProductGrid from "./extra/ProductGrid"
 import { useEffect, useState } from "react"
-import get from "../utils/data"
+import axios from "axios"
 
 
-export default function Page({ setCart }) {
+export default function Page({ loadCart }) {
     const [products, setProducts] = useState([])
-    useEffect(() => {get("products", setProducts)}, [])
+    async function loadProducts(){
+        const response = await axios.get("/api/products")
+        setProducts(response.data)
+    }
+    useEffect(() => {loadProducts()}, [])
+
+    if (!products) return null
 
     return (<>
         <link rel="icon" type="image/svg+xml" href="images/home-favicon.png" />
@@ -15,7 +21,7 @@ export default function Page({ setCart }) {
                 {products.map((product) => {
                     return <ProductGrid
                         product={product}
-                        setCart={setCart}
+                        loadCart={loadCart}
                         key={product.id}
                     />
                 })}

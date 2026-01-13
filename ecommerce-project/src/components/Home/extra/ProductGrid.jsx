@@ -2,9 +2,8 @@ import axios from "axios";
 import formatCurrency from "../../utils/formatCurrency";
 import checkmark from "../../../assets/images/icons/checkmark.png"
 import { useState } from "react";
-import get from "../../utils/data";
 
-export default function ProductGrid({ product, setCart }) {
+export default function ProductGrid({ product, loadCart }) {
     const { id, image, name, priceCents, rating } = product
     const [quantity, setQuantity] = useState(1);
 
@@ -13,7 +12,7 @@ export default function ProductGrid({ product, setCart }) {
             productId: id,
             quantity
         });
-        get("cart", setCart)
+        loadCart()
     }
     function selectedQuantity(ev) {
         const quantitySelected = Number(ev.target.value);
