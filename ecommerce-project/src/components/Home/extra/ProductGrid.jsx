@@ -25,6 +25,7 @@ export default function ProductGrid({ product, loadCart }) {
         <div className="product-container">
             <div className="product-image-container">
                 <img className="product-image"
+                    data-testid="product-image"
                     src={image} />
             </div>
 
@@ -34,14 +35,17 @@ export default function ProductGrid({ product, loadCart }) {
 
             <div className="product-rating-container">
                 <img className="product-rating-stars"
+                    data-testid="product-rating-stars"
                     src={`images/ratings/rating-${rating.stars * 10}.png`} />
-                <div className="product-rating-count link-primary">
+                <div className="product-rating-count link-primary"
+                    data-testid="product-rating-count"
+                >
                     {rating.count}
                 </div>
             </div>
 
             <div className="product-price">
-                {formatCurrency(priceCents)}
+                ${formatCurrency(priceCents)}
             </div>
 
             <div className="product-quantity-container">

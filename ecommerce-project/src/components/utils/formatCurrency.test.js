@@ -7,7 +7,7 @@ describe("formatCurrency", ()=>{
     });
     it("displays 2 decimals", ()=>{
         expect(formatCurrency(1090)).toBe("10.90")
-        expect(formatCurrency(10)).toBe("1.00")
+        expect(formatCurrency(100)).toBe("1.00")
     });
 })
 // npx vitest
