@@ -76,6 +76,7 @@ export default function ProductGrid({ product, loadCart }) {
                 className="add-to-cart-button button-primary"
                 onClick={addToCart}
                 data-product-id={id}
+                data-testid="add-to-cart-button"
             >
                 Add to Cart
             </button>
