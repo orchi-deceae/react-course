@@ -3,11 +3,12 @@ import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Page from "./Page";
 import axios from "axios";
-import { data, MemoryRouter } from "react-router";
+import { MemoryRouter } from "react-router";
 vi.mock("axios")
 
 describe("Home Page component", ()=>{
     let loadCart;
+    let user;
     beforeEach(()=>{
         loadCart = vi.fn();
         axios.get.mockImplementation( async (urlPath)=>{
@@ -50,6 +51,7 @@ describe("Home Page component", ()=>{
                 ]
             }
         });
+        user = userEvent.setup()
     });
 
     it("displays the products correctly", async ()=>{
@@ -76,5 +78,62 @@ describe("Home Page component", ()=>{
             within(productContainers[2]).getByText(
                 "Adults Plain Cotton T-Shirt - 2 Pack")
         )
+    });
+
+    // it("activates the addToCart button correctly", async ()=>{
+    //     render(<MemoryRouter>
+    //         <Page cart={[]} loadCart={loadCart} />
+    //     </MemoryRouter>
+    //     )
+        
+    //     const productContainers = await screen.findAllByTestId("product-container")
+    //     const addToCartBtt1 = within(productContainers[0]).getByTestId("add-to-cart-button")
+    //     const addToCartBtt2 = within(productContainers[1]).getByTestId("add-to-cart-button")
+
+    //     await user.click(addToCartBtt1)
+    //     await user.click(addToCartBtt2)
+
+    //     expect(axios.post).toHaveBeenNthCalledWith(1, "/api/cart-items", {
+    //         productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
+    //         quantity: 1
+    //     })
+
+    //     expect(axios.post).toHaveBeenNthCalledWith(2, "/api/cart-items", {
+    //         productId: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
+    //         quantity: 1
+    //     })
+
+    //     expect(loadCart).toHaveBeenCalledTimes(2)
+    // });
+
+    it("activates the addToCart button with differnt quantities", async ()=>{
+        render(<MemoryRouter>
+            <Page cart={[]} loadCart={loadCart} />
+        </MemoryRouter>
+        )
+        
+        const productContainers = await screen.findAllByTestId("product-container")
+        const quantitySelector1 = within(productContainers[0]).getByTestId("quantity-selector")
+        const quantitySelector2 = within(productContainers[1]).getByTestId("quantity-selector")
+        const addToCartBtt1 = within(productContainers[0]).getByTestId("add-to-cart-button")
+        const addToCartBtt2 = within(productContainers[1]).getByTestId("add-to-cart-button")
+
+        await user.selectOptions(quantitySelector1, "2")
+        await user.selectOptions(quantitySelector2, "3")
+
+        await user.click(addToCartBtt1)
+        await user.click(addToCartBtt2)
+
+        expect(axios.post).toHaveBeenNthCalledWith(1, "/api/cart-items", {
+            productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
+            quantity: 2
+        })
+
+        expect(axios.post).toHaveBeenNthCalledWith(2, "/api/cart-items", {
+            productId: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
+            quantity: 3
+        })
+
+        expect(loadCart).toHaveBeenCalledTimes(2)
     });
 });
