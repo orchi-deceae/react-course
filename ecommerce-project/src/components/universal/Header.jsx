@@ -13,6 +13,15 @@ export default function Header({ cart }) {
         cart.forEach(item => sum += item.quantity);
         return sum;
     }
+    function specialEvents(ev){
+        if (ev.key === "Enter") navigate(`/?search=${search}`)
+        if (ev.key === "Escape") {
+            console.log([ev.target])
+            ev.target.value = ""
+            setSearch("")
+        }
+    }
+
     return (<>
         <title>Orders</title>
 
@@ -29,6 +38,7 @@ export default function Header({ cart }) {
                     type="text" 
                     className="search-bar" 
                     placeholder="Search"
+                    onKeyDown={specialEvents}
                     onChange={(ev)=>{setSearch(ev.target.value)}}
                 />
 
