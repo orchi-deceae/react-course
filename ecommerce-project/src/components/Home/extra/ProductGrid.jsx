@@ -51,7 +51,11 @@ export default function ProductGrid({ product, loadCart }) {
             </div>
 
             <div className="product-quantity-container">
-                <select value={quantity} onChange={selectedQuantity}>
+                <select 
+                    value={quantity} 
+                    onChange={selectedQuantity}
+                    data-testid="quantity-selector"
+                >
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
