@@ -14,7 +14,7 @@ function App() {
         setCart(response.data)
     }
     useEffect(() => {loadCart()}, [])
-    window.axios = axios // axios.post("/api/reset")
+    window.axios = axios // axios.post("/api/reset") 
 
     return (<>
         <Routes>
