@@ -5,6 +5,14 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const message = "Hello";
+  console.log(message)
+
+  message.toLowerCase()
+  message.toFixed()
+
+  count.toFixed()
+  count.toLowerCase()
 
   return (
     <>
