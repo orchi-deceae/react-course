@@ -1,0 +1,26 @@
+
+.login-form-{
+    margin-left: 1px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.login-form- .text- {
+    padding: 20px 0;
+    font-size: 35px;
+}
+.login-form- input{
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border-radius: 10px;
+    border: solid 1px black;
+    font-size: 25px;
+}
+.login-form- button{
+    background-color: rgb(0, 123, 255);
+    color: white;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border-radius: 10px;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+}

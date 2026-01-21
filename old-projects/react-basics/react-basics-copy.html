@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>React Basics</title>
+</head>
+<body>
+    <div class="js-container"></div>
+    <div class="container"></div>
+    <div class="app-"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+    <script type="text/babel">
+        const button = <button>hello</button>;
+        const paragraph = <p>Paragraph of text</p>;
+
+        const socks = 10;
+        const shirt = 8;
+        const productCost = socks + shirt*2
+        const shippingCost = 5
+
+        const day = dayjs().format('MMMM D')
+
+        const container = document.querySelector(".js-container");
+        const div = (
+            <div>
+                <button>hello</button>    
+                <p>Paragraph of text {2 + 2}</p>
+                <button>Good job!</button>
+                <p>My name is Elvis</p>
+            </div>
+        );
+        ReactDOM.createRoot(container).render(div);
+
+        const root = ReactDOM.createRoot(document.querySelector('.container'))
+        setInterval(() => {
+            let div2 = (
+                <div>
+                    <br></br>
+                    <p>Cotton socks</p>    
+                    <p>Price: $10</p>
+                    <button>Add to Cart</button>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <p>Product cost: ${productCost}</p>
+                    <p>Shipping cost: ${shippingCost}</p>
+                    <p>Total cost: ${productCost + shippingCost}</p>
+                    <button>Place your order</button>
+                    <br></br>
+                    <br></br>
+                    <p>Today is {day}</p>
+                    <p>Current time: {dayjs().format('HH:mm:ss')}</p>
+                </div>
+            )
+            root.render(div2);
+        }, 1000);
+
+        function LoginForm(){
+            return (<>
+                <div><input type="text" placeholder="Email" /></div>
+                <div><input type="Password" placeholder="Password" /></div>
+                <button>Login</button>
+                <button>Sign up</button>
+            </>)
+        }
+        
+        function App(){
+            return (<>
+                <br/><br/><br/><br/> 
+                <p>Hello welcome to my website</p>
+                <LoginForm />
+            </>)
+        }
+        
+        ReactDOM.createRoot(document.querySelector('.app-')).render(<App />)
+    </script>
+</body>
+</html>
+
+<!-- npm create vite@latest frontend -->
+<!-- cd frontend -->
+<!-- npm install -->
+<!-- nmp run dev -->
