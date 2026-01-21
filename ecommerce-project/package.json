@@ -1,13 +1,11 @@
 {
-  "name": "ecommerce-project",
+  "name": "ecommerce-project-ts",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build:frontend": "vite build",
-    "build:backend": "npm --prefix ../ecommerce-backend run zip",
-    "build": "run-s build:frontend build:backend",
+    "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -20,6 +18,10 @@
     "react-router": "^7.11.0"
   },
   "devDependencies": {
+    "@types/node": "^24.10.1",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.46.4",
+
     "@eslint/js": "^9.39.1",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
