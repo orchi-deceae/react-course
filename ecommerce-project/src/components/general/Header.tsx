@@ -6,7 +6,15 @@ import { NavLink, useNavigate } from "react-router"
 import { useState } from "react"
 import "./Header.css"
 
-export default function Header({ cart }) {
+type props = {
+    cart: {
+        productId: string;
+        quantity: number;
+        deliveryOptionId: string;
+    }[];
+}
+
+export default function Header({ cart }: props) {
     const [search, setSearch] = useState("")
     const navigate = useNavigate();
     
