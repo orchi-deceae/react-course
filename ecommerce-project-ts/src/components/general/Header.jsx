@@ -1,9 +1,10 @@
-import logo from "../../assets/images/logo-white.png"
 import mobileLogo from "../../assets/images/mobile-logo-white.png"
-import cartIcon from "../../assets/images/icons/cart-icon.png"
 import searchIcon from "../../assets/images/icons/search-icon.png"
+import cartIcon from "../../assets/images/icons/cart-icon.png"
+import logo from "../../assets/images/logo-white.png"
 import { NavLink, useNavigate } from "react-router"
 import { useState } from "react"
+import "./Header.css"
 
 export default function Header({ cart }) {
     const [search, setSearch] = useState("")
