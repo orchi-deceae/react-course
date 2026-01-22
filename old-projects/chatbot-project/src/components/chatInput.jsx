@@ -24,7 +24,7 @@ function ChatInput({ chatMessages, setChatMessages}) {
         setChatMessages(newChatMessages);
         setChatMessages([
             ...newChatMessages, {
-                message: <img src="/loading-spinner.gif" />,
+                message: <img src="/chatbot-project/loading-spinner.gif" />,
                 sender: "robot",
                 time: "",
                 key: crypto.randomUUID()
