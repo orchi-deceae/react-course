@@ -1,5 +1,5 @@
 import axios from "axios"
-import CartItemContainer from "./extra/cartItemContainer"
+import CartItemContainer from "./extra/CartItemContainer"
 import PaymentSummary from "./extra/PaymentSummary"
 import { useEffect, useState } from "react";
 

@@ -7,14 +7,26 @@ import Orders from './pages/Orders';
 import Home from './pages/Home';
 import axios from 'axios';
 
+declare global {
+    interface Window {
+        axios: typeof axios;
+    }
+}
+
 function App() {
     const [cart, setCart] = useState([])
     async function loadCart(){
         const response = await axios.get("/api/cart-items?expand=product")
         setCart(response.data)
     }
-    useEffect(() => {loadCart()}, [])
-    window.axios = axios // axios.post("/api/reset") 
+    useEffect(() => {
+        async function loadCart(){
+            const response = await axios.get("/api/cart-items?expand=product")
+            setCart(response.data)
+        }
+        loadCart()
+        window.axios = axios // axios.post("/api/reset")
+    }, [])
 
     return (<>
         <Routes>
