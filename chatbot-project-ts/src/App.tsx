@@ -3,7 +3,6 @@ import { Chatbot } from 'supersimpledev';
 import ChatMessages from './components/chatMessages';
 import ChatInput from './components/chatInput';
 import favicon from './assets/favicon-chatgpt.png';
-import './styles/App.css';
 
 function App() {
     const [

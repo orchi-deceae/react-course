@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Chatbot } from "supersimpledev"
 import dayjs from "supersimpledev/dayjs";
-import "../styles/App/chatInput.css"
+import "./chatInput.css"
 
 function ChatInput({ chatMessages, setChatMessages}) {
     const [inputText, setInpetText] = useState('');
