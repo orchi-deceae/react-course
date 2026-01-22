@@ -8,7 +8,7 @@ export default defineConfig({
         babel: {
             plugins: [['babel-plugin-react-compiler', { target: '19' }]],
         },
-        })
+    })
   ],
   server: {
     proxy: {
@@ -24,3 +24,4 @@ export default defineConfig({
     outDir: "../ecommerce-backend/dist"
   }
 })
+// npm install --save-dev babel-plugin-react-compiler@rc
