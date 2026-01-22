@@ -16,7 +16,7 @@ function App() {
 
     useEffect(()=>{
         Chatbot.addResponses({
-            'Bonjour': `Bonjour, comment tu t'appelle`,
+            'Bonjour': `Bonjour, comment ca va?`,
             'Bonjour salut': `Bonjour! Comment puis-je aider toi`,
             'Ça va?': `Ça va bien! Comment peux j'aider vous?`,
             'Bon journee': `Au revoir, bon journey!`,

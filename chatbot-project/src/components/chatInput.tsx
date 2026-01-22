@@ -1,14 +1,27 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import { Chatbot } from "supersimpledev"
 import dayjs from "supersimpledev/dayjs";
 import "./chatInput.css"
 
-function ChatInput({ chatMessages, setChatMessages}) {
-    const [inputText, setInpetText] = useState('');
+type Props = {
+    chatMessages: ChatMessageProps[],
+    setChatMessages: (chatMessages: ChatMessageProps[]) => void
+}
+type ChatMessageProps = {
+    message: string | React.JSX.Element,
+    sender: string,
+    time: string,
+    key: string
+}
+type ChangeEvType = React.ChangeEvent<HTMLInputElement>
+type KeyEvType = React.KeyboardEvent<HTMLInputElement>
+
+function ChatInput({ chatMessages, setChatMessages }: Props) {
+    const [inputText, setInputText] = useState('');
     const now = dayjs().format("HH:mm");
 
     async function sendMessage() {
-        try {if (chatMessages[chatMessages.length-1].message === "Loading") return console.log('Let message finish loading')} catch(err) { err }
+        try { if (chatMessages[chatMessages.length - 1].message === "Loading") return console.log('Let message finish loading') } catch (err) { console.error(err) }
         if (!inputText) return console.log('Please type words')
 
         const newChatMessages = [
@@ -19,7 +32,7 @@ function ChatInput({ chatMessages, setChatMessages}) {
                 key: crypto.randomUUID()
             }
         ]
-        setInpetText('')
+        setInputText('')
 
         setChatMessages(newChatMessages);
         setChatMessages([
@@ -39,13 +52,13 @@ function ChatInput({ chatMessages, setChatMessages}) {
             }
         ]);
     }
-    function keyAction(ev) {
-        if (ev.key === "Enter") { sendMessage(ev.target.value) }
-        if (ev.key === "Escape") { setInpetText('') }
+    function keyAction(ev: KeyEvType) {
+        if (ev.key === "Enter") { sendMessage() }
+        if (ev.key === "Escape") { setInputText('') }
     }
-    function saveInputText(ev) { setInpetText(ev.target.value) }
+    function saveInputText(ev: ChangeEvType) { setInputText(ev.target.value) }
 
-    function clearMessage(){
+    function clearMessage() {
         localStorage.removeItem("messages")
         setChatMessages([])
     }
@@ -54,13 +67,13 @@ function ChatInput({ chatMessages, setChatMessages}) {
         <input
             type="text"
             placeholder="Send a message to Chatbot"
-            size="30"
+            size={30}
             onChange={saveInputText}
             onKeyDown={keyAction}
             value={inputText}
             className="chat-input-"
         />
-        <button className="send-button-"  onClick={sendMessage} >Send</button>
+        <button className="send-button-" onClick={sendMessage} >Send</button>
         <button className="clear-button-" onClick={clearMessage}>Clear</button>
     </div>)
 }
